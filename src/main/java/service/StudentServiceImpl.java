@@ -38,4 +38,9 @@ public class StudentServiceImpl implements StudentService {
     public StudentEntity deleteFromId(Integer id) {
         return dao.deleteFromId(id);
     }
+
+    @Override
+    public void updateStudent(Integer id, StudentEntity studentEntity) {
+        dao.updateStudent(id,studentEntity);
+    }
 }

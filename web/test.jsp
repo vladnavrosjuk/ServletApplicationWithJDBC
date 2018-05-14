@@ -13,12 +13,16 @@
     <title>Title</title>
 </head>
 <body>
-    ${message};
-    <form action="${ pageContext.request.contextPath}test" method="post">
+<jsp:include page="header.jsp"/>
 
+    <form action="${ pageContext.request.contextPath}test" method="post">
+        <p>Name</p>
         <p><input id="1"  type="text" name="name" value="${stud1}"/></p>
+        <p>Surname</p>
         <p><input  type="text" name="surname" value="${stud1}"/></p>
+        <p>Gtoup</p>
         <p><input  type="text" name="group" value="${stud1}"/></p>
+        <p>Facultet</p>
 
 
         <select name="testfacultet" >
@@ -27,7 +31,9 @@
                 <option value=${stud.id}>${stud.name}</option>
             </c:forEach>
         </select>
+        <p>Av.Score</p>
         <p><input  type="text" name="avscore" value="${stud1}"/></p>
+        <p>Number</p>
         <p><input  type="text" name="number" value="${stud1}"/></p>
         <p>
             <input type="submit" name="submit" value="Save"/></p>

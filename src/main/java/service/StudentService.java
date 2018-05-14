@@ -12,4 +12,6 @@ public interface StudentService {
     List<FacultetEntity > getallFacultet();
     FacultetEntity findFacultetById (Integer id);
     StudentEntity deleteFromId(Integer id);
+    void updateStudent(Integer id, StudentEntity studentEntity);
+
 }

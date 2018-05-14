@@ -12,15 +12,21 @@
     <title>Title</title>
 </head>
 <body>
-<center><h1>All books</h1></center>
+<jsp:include page="header.jsp"/>
+<p><input   type="text" name="studentName" value="${studentNameValue}"/></p>
+<center><h1>All Students</h1></center>
 
 <table>
     <tr>
-        <th> Book</th>
-        <th> Edit</th>
-        <th> Delete</th>
+        <th> Name</th>
+        <th> Surname</th>
+        <th> StudentGroup</th>
+        <th> Facultet</th>
+        <th> Av.Score</th>
+        <th> Number</th>
         <th> Delete</th>
     </tr>
+
 
 
     <c:forEach items="${student}" var="stud">
@@ -35,9 +41,25 @@
                     ${stud.group}
             </th>
             <th>
-            <a href="${pageContext.request.contextPath}deleteBook?book=${stud.id}">
+                    ${stud.facultet}
+            </th>
+            <th>
+                    ${stud.avscore}
+            </th>
+            <th>
+                    ${stud.number}
+            </th>
+            <th>
+            <a href="${pageContext.request.contextPath}deleteStudent?student=${stud.id}">
                 delete
             </a>
+
+            </th>
+            <th>
+                <a href="${pageContext.request.contextPath}editStudent?studentID=${stud.id}">
+                    edit
+                </a>
+
             </th>
         </tr>
         <br>

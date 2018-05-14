@@ -23,6 +23,7 @@ public class StudentDBConnectorImpl implements StudentDBConnector {
             "WHERE id = ?";
     private static final String deleteStudentFormId= "DELETE FROM students " +
             "WHERE id = ?";
+    private static final String updateStudentFromId= "UPDATE students SET name = ?, surname= ?, studentgroup= ?, facultet= ? , avscore= ?, number= ? "+ "WHERE id= ?";
 
     @Override
     public StudentEntity createStudent( StudentEntity studentEntity) {
@@ -228,5 +229,38 @@ public class StudentDBConnectorImpl implements StudentDBConnector {
             }
         }
         return studentEntity;
+    }
+
+    @Override
+    public void updateStudent(Integer id, StudentEntity studentEntity) {
+        Connection conn = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            PreparedStatement ps = conn.prepareStatement(updateStudentFromId, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, studentEntity.getName());
+            ps.setString(2, studentEntity.getSurname());
+            ps.setInt(3, studentEntity.getGroup());
+            ps.setString(4, studentEntity.getFacultet());
+            ps.setString(5, studentEntity.getAvscore());
+            ps.setString(6, studentEntity.getNumber());
+            ps.setInt(7, id);
+            ps.execute();
+
+            ps.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

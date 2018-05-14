@@ -11,6 +11,7 @@
     <title>Add Facultet</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 
 <form action="${ pageContext.request.contextPath}addFacultet" method="post">
     <p><input  type="text" name="stud" value="${nameFacultet}"/></p>
